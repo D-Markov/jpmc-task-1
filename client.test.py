@@ -19,5 +19,15 @@ class TestClient(unittest.TestCase):
 
         self.assertEqual((quote['top_bid']['price'] + quote['top_ask']['price']) / 2, price)
 
+    def test_getRatio(self):
+        ratio = client.getRatio(20, 2)
+
+        self.assertEqual(ratio, 10)
+
+    def test_getRatio_when_price_two_is_zero(self):
+        ratio = client.getRatio(20, 0)
+
+        self.assertIsNone(ratio)
+
 if __name__ == '__main__':
     unittest.main()
